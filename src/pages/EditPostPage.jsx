@@ -53,23 +53,6 @@ export const EditPostPage = () => {
 
   return (
     <form className="w-1/3 mx-auto py-10" onSubmit={(e) => e.preventDefault()}>
-      <label className="text-gray-300 py2 bg-gray-600 text-xsmt-3 flex items-center justify-center border-2 border-dotted cursor-pointer">
-        Add image
-        <input
-          type="file"
-          className="hidden"
-          onChange={(e) => {
-            setImage(e.target.files[0]);
-            setOldImage("");
-          }}
-        />
-      </label>
-      <div className="flex object-cover py-2 ">
-        {oldImage && (
-          <img src={`http://localhost:3002/${oldImage}`} alt={oldImage.name} />
-        )}
-        {image && <img src={URL.createObjectURL(image)} alt={image.name} />}
-      </div>
 
       <label className="text-xs text-white opacity-70">
         Header Post
