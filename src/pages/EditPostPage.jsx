@@ -10,7 +10,6 @@ export const EditPostPage = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
-  const [oldImage, setOldImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
