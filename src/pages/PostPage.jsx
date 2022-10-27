@@ -87,7 +87,7 @@ export const PostPage = () => {
             >
               {post.imgUrl && (
                 <img
-                  src={`http://localhost:3002/${post.imgUrl}`}
+                  src={`https://ancient-depths-75826.herokuapp.com/${post.imgUrl}`}
                   alt="amg"
                   className="object-cover w-full"
                 />
