@@ -18,7 +18,6 @@ export const EditPostPage = () => {
     const { data } = await axios.get(`/posts/${params.id}`);
     setTitle(data.title);
     setText(data.text);
-    setOldImage(data.imgUrl);
   }, [params.id]);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ export const EditPostPage = () => {
       setText("");
       setTitle("");
       setImage("");
-      setOldImage("");
       navigate("/posts");
     } catch (error) {
       console.log(error);
@@ -47,7 +45,6 @@ export const EditPostPage = () => {
     setText("");
     setTitle("");
     setImage("");
-    setOldImage("");
   };
 
   return (
