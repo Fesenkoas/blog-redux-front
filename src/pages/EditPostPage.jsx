@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../redux/future/post/postSlise";
 import  FileBase64  from 'react-file-base64';
-import { fetchMyPost } from "../redux/future/action";
 
 export const EditPostPage = () => {
   const [title, setTitle] = useState("");
