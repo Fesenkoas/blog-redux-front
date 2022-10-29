@@ -21,9 +21,9 @@ const PostItem = ({ post }) => {
           >
             {post.imgUrl && (
               <img
-                src={`https://ancient-depths-75826.herokuapp.com/${post.imgUrl}`}
-                alt="amg"
-                className="object-cover w-full"
+                src={post.imgUrl}
+                alt="img"
+                className="object-contain w-full"
               />
             )}
           </div>
