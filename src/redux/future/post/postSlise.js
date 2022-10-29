@@ -41,7 +41,7 @@ export const editPost = createAsyncThunk(
   "post/editPost",
   async (updatedPost) => {
     try {
-      const { data } = await axios.put(`/posts/${updatedPost.id}`, updatedPost);
+      const { data } = await axios.put(`/posts/${updatedPost.params.id}`, updatedPost);
       return data;
     } catch (error) {
       console.log(error);

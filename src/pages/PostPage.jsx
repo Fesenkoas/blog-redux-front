@@ -63,10 +63,6 @@ export const PostPage = () => {
     fetchComment();
   }, [fetchPost, fetchComment]);
 
-  // useEffect(() => {
-  //   fetchComment();
-  // }, [fetchComment]);
-
   if (!post) {
     return (
       <div className="text-xl text-center text-white py-10">LOADING....</div>
@@ -87,9 +83,9 @@ export const PostPage = () => {
             >
               {post.imgUrl && (
                 <img
-                  src={`https://ancient-depths-75826.herokuapp.com/${post.imgUrl}`}
-                  alt="amg"
-                  className="object-cover w-full"
+                  src={post.imgUrl}
+                  alt="img"
+                  className="object-contain w-full"
                 />
               )}
             </div>

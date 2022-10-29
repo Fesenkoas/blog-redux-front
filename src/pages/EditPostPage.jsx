@@ -5,11 +5,14 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { editPost } from "../redux/future/post/postSlise";
+import  FileBase64  from 'react-file-base64';
+import { fetchMyPost } from "../redux/future/action";
 
 export const EditPostPage = () => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
+  const [oldImage, setOldImage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
@@ -18,6 +21,7 @@ export const EditPostPage = () => {
     const { data } = await axios.get(`/posts/${params.id}`);
     setTitle(data.title);
     setText(data.text);
+    setOldImage(data.imgUrl);
   }, [params.id]);
 
   useEffect(() => {
@@ -26,15 +30,12 @@ export const EditPostPage = () => {
 
   const handleClickAdd = () => {
     try {
-      const updatedPost = new FormData();
-      updatedPost.append("title", title);
-      updatedPost.append("text", text);
-      updatedPost.append("image", image);
-      updatedPost.append("id", params.id);
-      dispatch(editPost(updatedPost));
+      dispatch(editPost({title,text,image,params}));
       setText("");
       setTitle("");
       setImage("");
+      setOldImage("");
+      //fetchMyPost();
       navigate("/posts");
     } catch (error) {
       console.log(error);
@@ -45,10 +46,21 @@ export const EditPostPage = () => {
     setText("");
     setTitle("");
     setImage("");
+    setOldImage("");
   };
 
   return (
-    <form className="w-1/3 mx-auto py-10" onSubmit={(e) => e.preventDefault()}>
+    <div className="w-1/3 mx-auto py-10">
+      <label className="text-gray-300 py2 bg-gray-600 text-xsmt-3 flex items-center justify-center border-2 border-dotted cursor-pointer">
+      <FileBase64
+            multiple={false}
+            onDone={({ base64 }) => setImage({image:base64})}
+          />
+      </label>
+      <div className="flex object-cover py-2 ">
+
+        {image?<img src={image.image} alt={image.name} />:<img src={oldImage} alt={oldImage.name} />}
+      </div>
 
       <label className="text-xs text-white opacity-70">
         Header Post
@@ -83,6 +95,6 @@ export const EditPostPage = () => {
           Cancel
         </button>
       </div>
-    </form>
+    </div>
   );
 };
